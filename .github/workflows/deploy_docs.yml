@@ -1,4 +1,3 @@
-# .github/workflows/deploy_docs.yml
 name: Deploy doxygen to Pages
 
 on:
@@ -34,7 +33,7 @@ jobs:
         run: sudo touch ./build_doc/html/.nojekyll
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
           path: ./build_doc/html
 
