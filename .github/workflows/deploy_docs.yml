@@ -33,8 +33,9 @@ jobs:
         run: touch ./build_doc/html/.nojekyll
 
       - name: Upload Doxygen Artifacts
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: doxygen-docs
           path: ./build_doc/html
 
   deploy:
@@ -44,6 +45,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Doxygen Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: doxygen-docs
+          path: ./build_doc/html
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
