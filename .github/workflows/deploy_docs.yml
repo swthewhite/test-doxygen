@@ -30,7 +30,7 @@ jobs:
           working-directory: "."
 
       - name: Add .nojekyll File
-        run: touch ./build_doc/html/.nojekyll
+        run: sudo touch ./build_doc/html/.nojekyll
 
       - name: Upload Doxygen Artifacts
         uses: actions/upload-artifact@v4
